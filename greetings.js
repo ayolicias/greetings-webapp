@@ -2,8 +2,8 @@ module.exports = function Greetings(storednames) {
 
   // var storednames = "";
   var names = storednames || {};
-
   var greeting = '';
+  var counter = 0;
 
   function greetingFunction(language, name) {
     if (name !== '' && language) {
@@ -25,7 +25,7 @@ module.exports = function Greetings(storednames) {
       greeting = 'molo, ' + name;
     }
 
-    //return language +', '+ name;
+    return language +', '+ name;
   }
 
 
@@ -41,21 +41,14 @@ module.exports = function Greetings(storednames) {
     return names;
   }
 
-  // if (name === ''){
-  //     greetingElement.innerHTML = "Enter Name";
-  //     return;
-  // }
-  // else{
-  //   var message = greets.greetkey(greetinglanguage, name);
-  //   greets.calculate(greetinglanguage, name);
-
   function getGreeting() {
     return greeting
   }
 
   function reset() {
     greeting = '',
-      name = names = storednames || {};
+    name = names = storednames || {};
+    counter = 0;
   }
 
   return {

@@ -79,3 +79,13 @@ body {
 .language{
 
 }
+
+.entryOne{
+  color: green;
+}
+.entryTwo{
+  color: red;
+}
+.entryThree{
+  color: blue;
+}

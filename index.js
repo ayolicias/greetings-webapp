@@ -43,56 +43,70 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(express.static('public'));
 
-app.get('/', function(req, res) {
-  let counter = greet.getcount();
-  // let greets = greet.greetingFunction();
-  let greets = greet.getGreeting();
-
+app.get('/', async function(req, res) {
+let counter = greet.getcount();
+ let greets = greet.getGreeting();
+ let current = await pool.query('select count(*) from users');
+ let count= current.rows[0].current;
   res.render('home', {
     counter,
     greets
 
   });
 });
-app.get('/greeted', async function(req, res){
-  try{
-    let keep = await pool.query('select * from users');
-    let database = keep.rows;
-    res.render('greeted', {database});
-  }
-  catch(err){
-    res.send(err.stack);
-  }
-})
 
-
-app.post('/greeting', function(req, res) {
+app.post('/greeting',async function(req, res) {
 
   let name = req.body.inputName;
   let language = req.body.language;
+  greet.greetingFunction(language, name);
 
-  // if inputName !== ''&& language !undefined){
-  //   let user = await.Pool.query('select * from users WHERE users_greeted = $1', [name]);
-  //   if (user.rows.lenghth === 0){
-  //     Pool.query ('insert into users_greeted,user_language,counter')
-  //   }
-  // }
-
-  if (language === undefined || name === "") {
-    req.flash('info', 'Enter Name');
-
-  } else {
-    greet.greetingFunction(language, name)
+  if (name === "" && language === undefined) {
+    req.flash("entryOne", 'Enter name & Select Language')
   }
 
-  console.log(greet.greetMe(language, name));
+  else if (name ==='' || name === undefined) {
+    req.flash("entryTwo", 'Enter name')
+  }
+  else if (language ===''|| language === undefined) {
+    req.flash("entryThree", 'select language')
+  }
+
+  else{
+
+  let user = await pool.query('select * from users where users_greeted = $1', [name]);
+
+  if(user.rows.length != 0){
+    let currentCounter = await pool.query('select counter from users where users_greeted = $1',[name]);
+     let increment = currentCounter.rows[0].counter +1;
+     await pool.query('update users set counter =$1 where users_greeted =$2',[increment,name]);
+  }
+  else{
+    await pool.query('insert into users (users_greeted, user_language, counter) values ($1,$2,$3)',[name,language,1])
+
+  }
+}
+
   res.redirect('/');
 });
 
-app.get('/reset', function(req, res) {
+app.get('/greeted', async function(req, res,){
+  try{
+    let keep = await pool.query('select * from users');
+    let database = keep.rows;
+
+    res.render('greeted', {database});
+  }
+  catch(err){
+  }
+});
+
+app.get('/reset', async function(req, res) {
   greet.reset();
+  await pool.query('Delete from users');
   res.redirect('/');
 });
+
 
 let PORT = process.env.PORT || 3009;
 app.listen(PORT, function() {
