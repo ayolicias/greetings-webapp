@@ -74,12 +74,13 @@ app.post('/greeting',async function(req, res) {
 
   else{
 
-  let user = await pool.query('select * from users where users_greeted = $1', [name]);
-
+  let user = await pool.query('select * from users where users_greeted = $1', [name,]);
   if(user.rows.length != 0){
+
     let currentCounter = await pool.query('select counter from users where users_greeted = $1',[name]);
      let increment = currentCounter.rows[0].counter +1;
-     await pool.query('update users set counter =$1 where users_greeted =$2',[increment,name]);
+
+     await pool.query('update users set counter =$1,user_language=$2 where users_greeted =$3',[increment,language, name,]);
   }
   else{
     await pool.query('insert into users (users_greeted, user_language, counter) values ($1,$2,$3)',[name,language,1])
