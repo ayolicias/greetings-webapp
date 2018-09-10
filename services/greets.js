@@ -5,44 +5,36 @@ module.exports = function(pool) {
     return keep.rows;
   }
   async function insert(name, language) {
-    await pool.query('insert into users (users_greeted, user_language, counter) values ($1,$2,$3)', [name, language, 1])
-
+   let found = await pool.query('insert into users (users_greeted, user_language) values ($1,$2)', [name, language])
+   return found;
   }
   async function count() {
     let current = await pool.query('select count(*) from users');
     return parseInt(current.rows[0].count);
   }
-  async function updateUsers(increment, name, language) {
-    await pool.query('update users set counter =$1 where users_greeted =$2,user_language =$3', [increment, name, language]);
-
+  async function updateUsers(name, language) {
+   let update = await pool.query('update users set counter=(counter+1) , user_language=$2  where users_greeted =$1', [name, language]);
+   return update;
   }
-  async function greetUser(name) {
-    let user = await pool.query('select * from users where users_greeted = $1', [name]);
-    return user.rows[0];
+  async function findUser(name) {
+    let user = await pool.query('select * from users where users_greeted = $1', [name]);  
+    return user;
   }
 
-  async function IncrementUser(name, language) {
-    let user = await allData(name);
-
-    if (user.length != 0) {
-      let increment = user.counter + 1;
-      await IncrementUser(name, language, increment);
-    } else {
-      await insert(name, language);
+  async function greetUser(name,language){
+    let user = await  findUser(name);
+    if (user.rowCount == 0) {
+     await insert(name,language);
+    //  return Hi +', '+ name;
     }
-
-    if (user.rows.length != 0) {
-      let currentCounter = await pool.query('select counter from users where users_greeted = $1', [name]);
-      let increment = currentCounter.rows[0].counter + 1;
-      await pool.query('update users set counter =$1 where users_greeted =$2, where user_language =$3', [increment, name, language]);
-    } else {
-      await pool.query('insert into users (users_greeted, user_language, counter) values ($1,$2,$3)', [name, language, 1])
-
+     else{
+      await updateUsers(name,language);
+      return "updated";
     }
   }
-  async function increment(){
-    let currentCounter = await pool.query('select counter from users where users_greeted = $1',[name]);
-     return parseInt(currentCounter.rows[0].increment +1);
+  async function clear () {
+    let clear = await pool.query('DELETE FROM users');
+     return clear.rows[0];
   }
 
   return {
@@ -51,7 +43,7 @@ module.exports = function(pool) {
     count,
     updateUsers,
     greetUser,
-    IncrementUser,
-    increment
+    clear,
+    findUser 
   }
 }

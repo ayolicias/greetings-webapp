@@ -1,17 +1,21 @@
 
-<div class="row" id="input">
+<div class="row">
 
   <span class="count">{{counter}}</span>
+
   <form action="/greeting" method="POST">
+
+  <div class="row"id="input">
     <div class="four columns">
       <b>Name:</b> <input type="text" name="inputName" class="Name">
     </div>
-</div>
+  </div>
+    
 <div class="row" id="language">
   <div class="twelve columns">
-    <input type="radio" name="language" class="language" value='English'> English
-    <input type="radio" name="language" class="language" value='Afrikaans'> Afrikaans
-    <input type="radio" name="language" class="language" value='Isixhosa'> Isixhosa
+    <input type="radio" name="language" class="language" value='Hi'> English
+    <input type="radio" name="language" class="language" value='Hallo'> Afrikaans
+    <input type="radio" name="language" class="language" value='Molo'> Isixhosa
   </div>
 </div>
 <div class="row" id="greetMeBtn">
@@ -35,7 +39,11 @@
   <div class="entryThree">
       <span class=""> {{messages.entryThree}}</span>
   </div>
+    
 </form>
 
 <div class="greeting">{{greets}}</div>
 <a href ="/greeted">users_greeted</a>
+
+  </div>
+

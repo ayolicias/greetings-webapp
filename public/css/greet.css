@@ -6,12 +6,10 @@ body {
 
     padding: 20px;
     margin: 0;
+    align: center;
 
 }
-.input{
-  color:inherit;
 
-}
 .h1{
   color: inherit;
   font-style: oblique;
@@ -19,22 +17,29 @@ body {
 }
 
 .container {
-    position: left;
-    background-color: #ffe6e6;
+    position: center;
+    background-color: #ECF0F1;
     left: 0;
     top: 50%;
     width: 100%;
-    text-align: left;
     font-size: 25px;
     padding: 30px;
+    
 }
-
+#input{
+  color:inherit;
+  position: center;
+  font-style: oblique;
+  font-size: 20px;
+  text-align: center;
+  
+}
 @media screen and (max-width: 600px) {
 
 }
 
 .greetMeBtn {button
-  display: inline-block;
+  display: center;
   padding: 15px 25px;
   font-size: 24px;
   cursor: pointer;
@@ -46,11 +51,14 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+  position: center;
+  
+  
 }
-.greetMeBtn:hover {background-color: #3e8e41}
+.greetMeBtn:hover {background-color: #FDFEFE}
 
 .greetMeBtn:active {
-  background-color: #3e8e41;
+  background-color: #FDFEFE;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -68,24 +76,25 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+
 }
-.Reset:hover {background-color: #3e8e41}
+.Reset:hover {background-color: #FDFEFE}
 
 .Reset:active {
-  background-color: #3e8e41;
+  background-color: #FDFEFE;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 .language{
-
+  align-content: center
 }
 
 .entryOne{
-  color: green;
+  color: #34495E;
 }
 .entryTwo{
-  color: red;
+  color: #34495E;
 }
 .entryThree{
-  color: blue;
+  color: #34495E;
 }
