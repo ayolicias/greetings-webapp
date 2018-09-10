@@ -10,4 +10,5 @@ language: node_js
  
 addons:
     apt: 
-    packages:postgresql-server 9.2
+    packages:
+      - postgresql-server-9.2
