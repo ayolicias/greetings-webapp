@@ -5,7 +5,7 @@ const Pool = pg.Pool;
 
 
 let useSSL = false;
-let local = process.env.LOCAL || false;
+//let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL) {
   useSSL = true;
 }
