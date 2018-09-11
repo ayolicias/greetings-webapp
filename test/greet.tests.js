@@ -20,9 +20,9 @@ const pool = new Pool({
 
 // describe('The greeted database', function() {
   describe('Count the number of users added ', function() {
-    beforeEach(async function() {
-      await pool.query('delete from users;');
-    });
+    // beforeEach(async function() {
+    //   await pool.query('delete from users;');
+    // });
     it('should return 0', async function() {
       let greet = service(pool);
       let result = await greet.allData();
