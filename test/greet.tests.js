@@ -18,7 +18,7 @@ const pool = new Pool({
 });
 
 
-describe('The greeted database', function() {
+describe('Greeted Web App database', function() {
   beforeEach(async function() {
       await pool.query('delete from users;');
     });
