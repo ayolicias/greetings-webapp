@@ -28,12 +28,6 @@ describe('The greeted database', function() {
       assert.strictEqual(result.length, 0);
     });
 
-  });
-// });
-
-
-
-
 beforeEach(async function() {
   await pool.query('delete from users;');
 });
@@ -44,10 +38,6 @@ it('should greet one user', async function() {
   let result = await greet.allData();
   assert.strictEqual(result.length, 1);
 });
-
-// beforeEach(async function() {
-//   await pool.query('delete from users;');
-// });
 
 it('should insert greeted users', async function() {
   let greet = service(pool);
@@ -73,11 +63,11 @@ it('should update greeted users ', async function() {
   await greet.insert('phindi', 'halo');
   await greet.updateUsers('phindi', 'molo');
   let result = await greet.findUser('phindi');
-  //console.log(result);
   assert.strictEqual(result.rows[0].counter, 2);
 });
 
 beforeEach(async function() {
   await pool.query('delete from users;');
+});
 });
   
