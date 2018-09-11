@@ -10,7 +10,7 @@ if (process.env.DATABASE_URL && !local) {
   useSSL = true;
 }
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/greeted_app_database';
+const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/greet_test';
 
 const pool = new Pool({
   connectionString,
