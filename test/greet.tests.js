@@ -29,9 +29,6 @@ const pool = new Pool({
       assert.strictEqual(result.length, 0);
     });
 
-    after(function() {
-      pool.end();
-    });
   });
 // });
 
