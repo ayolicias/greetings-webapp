@@ -18,9 +18,8 @@ const pool = new Pool({
 });
 
 
-// describe('The greeted database', function() {
-  describe('Count the number of users added ', function() {
-    beforeEach(async function() {
+describe('The greeted database', function() {
+  beforeEach(async function() {
       await pool.query('delete from users;');
     });
     it('should return 0', async function() {
@@ -29,7 +28,7 @@ const pool = new Pool({
       assert.strictEqual(result.length, 0);
     });
 
-  // });
+  });
 // });
 
 
@@ -81,4 +80,4 @@ it('should update greeted users ', async function() {
 beforeEach(async function() {
   await pool.query('delete from users;');
 });
-  });
+  
