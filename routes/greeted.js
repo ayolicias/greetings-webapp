@@ -1,6 +1,13 @@
 
 module.exports = function (greetServices) {
 
+  async function home(req,res){
+    try{
+      let counter = await greetServices.count()
+      res.render('home',{counter});
+    } catch(err){}
+  }
+
     async function getAllUsers (req, res){
         try{
                 let users = await greetServices.allData()
@@ -13,30 +20,61 @@ module.exports = function (greetServices) {
               }
  }  
 
+ async function getRoute(req, res) {
+   try{
+    let name = req.params.name;
+    let language = req.params.language;
+  
+  
+    if (name === "" && language === undefined) {
+      req.flash("entryOne", 'Enter name & Select Language')
+    }
+  
+    else if (name ==='' || name === undefined) {
+      req.flash("entryTwo", 'Enter name')
+    }
+    else if (language ===''|| language === undefined) {
+      req.flash("entryThree", 'select language')
+    }
+  
+    else{
+      await greetServices.greetUser(name,language);
+      req.flash("entryOne",language + ', '+name)
+  }
+  let counter = await greetServices.count()
+  
+    res.render('home',{counter});
+   }
+  catch(err){}
+};
+
 
 async function greetUser(req, res) {
-  let name = req.body.inputName;
-  let language = req.body.language;
-
-
-  if (name === "" && language === undefined) {
-    req.flash("entryOne", 'Enter name & Select Language')
+  try{
+    let name = req.body.inputName;
+    let language = req.body.language;
+  
+  
+    if (name === "" && language === undefined) {
+      req.flash("entryOne", 'Enter name & Select Language')
+    }
+  
+    else if (name ==='' || name === undefined) {
+      req.flash("entryTwo", 'Enter name')
+    }
+    else if (language ===''|| language === undefined) {
+      req.flash("entryThree", 'select language')
+    }
+  
+    else{
+      await greetServices.greetUser(name,language);
+      req.flash("entryOne",language + ', '+name)
   }
-
-  else if (name ==='' || name === undefined) {
-    req.flash("entryTwo", 'Enter name')
+  let counter = await greetServices.count()
+  
+    res.render('home',{counter});
   }
-  else if (language ===''|| language === undefined) {
-    req.flash("entryThree", 'select language')
-  }
-
-  else{
-    await greetServices.greetUser(name,language);
-    req.flash("entryOne",language + ', '+name)
-}
-let counter = await greetServices.count()
-
-  res.render('home',{counter});
+  catch(err){}
 };
 
    async function reset (req, res) {
@@ -47,7 +85,9 @@ let counter = await greetServices.count()
 return{
     getAllUsers,
     greetUser,
-    reset
+    reset,
+    getRoute,
+    home
 }
     
 }

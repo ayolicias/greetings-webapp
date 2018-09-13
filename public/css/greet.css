@@ -1,100 +1,101 @@
 {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
 
-    padding: 20px;
-    margin: 0;
-    align: center;
+  padding: 20px;
+  margin: 0;
+  /* align: center; */
 
 }
 
 .h1{
-  color: inherit;
-  font-style: oblique;
-  font-size: 20px;
+color: inherit;
+font-style: oblique;
+font-size: 20px;
 }
 
 .container {
-    position: center;
-    background-color: #ECF0F1;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    font-size: 25px;
-    padding: 30px;
-    
+  position: center;
+  background-color: #ECF0F1;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  font-size: 25px;
+  padding: 30px;
+  
 }
 #input{
-  color:inherit;
-  position: center;
-  font-style: oblique;
-  font-size: 20px;
-  text-align: center;
-  
+color:inherit;
+position: center;
+font-style: oblique;
+font-size: 20px;
+text-align: center;
+
 }
 @media screen and (max-width: 600px) {
 
 }
 
 .greetMeBtn {button
-  display: center;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-  position: center;
-  
-  
+display: center;
+padding: 15px 25px;
+font-size: 24px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: #fff;
+background-color: #4CAF50;
+border: none;
+border-radius: 15px;
+box-shadow: 0 9px #999;
+position: center;
+
+
 }
 .greetMeBtn:hover {background-color: #FDFEFE}
 
 .greetMeBtn:active {
-  background-color: #FDFEFE;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+background-color: #FDFEFE;
+box-shadow: 0 5px #666;
+transform: translateY(4px);
 }
 
 .Reset {button
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+display: inline-block;
+padding: 15px 25px;
+font-size: 24px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: #fff;
+background-color: #4CAF50;
+border: none;
+border-radius: 15px;
+box-shadow: 0 9px #999;
 
 }
 .Reset:hover {background-color: #FDFEFE}
 
 .Reset:active {
-  background-color: #FDFEFE;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+background-color: #FDFEFE;
+box-shadow: 0 5px #666;
+transform: translateY(4px);
 }
 .language{
-  align-content: center
+align-content: center
 }
 
+
 .entryOne{
-  color: #34495E;
+  color: #F54D32;
 }
 .entryTwo{
-  color: #34495E;
+  color: #F54D32;
 }
 .entryThree{
-  color: #34495E;
+  color: #F54D32;
 }

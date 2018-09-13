@@ -9,7 +9,7 @@ const session = require('express-session');
 const pg = require('pg');
 const Pool = pg.Pool;
 
-app.use(flash());
+
 
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -30,6 +30,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(flash());
 const greetServices = GreetServices(pool);
 const  greetRoute = GreetRoute(greetServices);
 
@@ -47,9 +48,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(express.static('public'));
 
-app.get('/',greetRoute.greetUser);
+app.get('/',greetRoute.home);
 
  app.post('/greeting',greetRoute.greetUser)
+ app.get('/greeting/:name/:language',greetRoute.getRoute)
+
 
 app.get('/greeted',greetRoute.getAllUsers);
 
