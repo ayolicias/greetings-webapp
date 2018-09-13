@@ -1,19 +1,19 @@
 <div class="row">
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Language</th>
-        <th scope="col">counter</th>
-      </tr>
-    </thead>
-
+  <table class="table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">Greeted languages</th>
+      {{!-- <th scope="col">counter</th> --}}
+      
+    </tr>
+  </thead>
   <tbody>
     {{#each database}}
     <tr>
-      <td>{{users_greeted}}</td>
+      <td><a href="/counter/{{users_greeted}}">{{users_greeted}}</a></td>
       <td>{{user_language}}</td>
-      <td>{{counter}}</td>
+      {{!-- <td>{{counter}}</td> --}}
     </tr>
   {{/each}}
   </tbody>

@@ -16,7 +16,7 @@ module.exports = function (greetServices) {
                 res.render('greeted',{database});
               }
               catch(err){
-                console.log(er.stack)
+              // console.log(er.stack)
               }
  }  
 
@@ -66,6 +66,7 @@ async function greetUser(req, res) {
       req.flash("entryThree", 'select language')
     }
   
+  
     else{
       await greetServices.greetUser(name,language);
       req.flash("entryOne",language + ', '+name)
@@ -76,18 +77,34 @@ async function greetUser(req, res) {
   }
   catch(err){}
 };
-
    async function reset (req, res) {
       await greetServices.clear();
      
       res.redirect('/');
     };
+    async function namesgreeted(req, res){
+      try{
+        let people = req.params.username;
+        
+        let result = await greetServices.findUser(people);
+        let coun = result[0].counter;
+       
+         
+      res.render('names',{people,coun});
+      }
+      catch(err){
+      res.send(err.stack)
+    }
+  }
+
+
 return{
     getAllUsers,
     greetUser,
     reset,
     getRoute,
-    home
+    home,
+    namesgreeted
 }
     
 }

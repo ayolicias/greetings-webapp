@@ -55,12 +55,12 @@ app.get('/',greetRoute.home);
 
 
 app.get('/greeted',greetRoute.getAllUsers);
-
+app.get('/counter/:username',greetRoute.namesgreeted);
 app.get('/reset',greetRoute.reset);
  
 
 
 let PORT = process.env.PORT || 3009;
 app.listen(PORT, function() {
-  console.log("App started on Port", PORT);
+console.log("App started on Port", PORT);
 });

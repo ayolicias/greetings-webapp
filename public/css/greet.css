@@ -55,6 +55,11 @@ position: center;
 
 
 }
+
+.small {
+  font-size: 1em;
+  color: darkgreen;
+}
 .greetMeBtn:hover {background-color: #FDFEFE}
 
 .greetMeBtn:active {

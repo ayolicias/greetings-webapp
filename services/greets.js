@@ -18,18 +18,16 @@ module.exports = function(pool) {
   }
   async function findUser(name) {
     let user = await pool.query('select * from users where users_greeted = $1', [name]);  
-    return user;
+    return user.rows;
   }
 
   async function greetUser(name,language){
     let user = await  findUser(name);
-    if (user.rowCount == 0) {
+    if (user.length == 0) {
      await insert(name,language);
-    //  return Hi +', '+ name;
     }
      else{
       await updateUsers(name,language);
-      return "updated";
     }
   }
   async function clear () {
