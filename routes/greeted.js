@@ -48,13 +48,11 @@ module.exports = function (greetServices) {
   catch(err){}
 };
 
-
 async function greetUser(req, res) {
   try{
     let name = req.body.inputName;
     let language = req.body.language;
-  
-  
+    
     if (name === "" && language === undefined) {
       req.flash("entryOne", 'Enter name & Select Language')
     }
@@ -65,8 +63,6 @@ async function greetUser(req, res) {
     else if (language ===''|| language === undefined) {
       req.flash("entryThree", 'select language')
     }
-  
-  
     else{
       await greetServices.greetUser(name,language);
       req.flash("entryOne",language + ', '+name)
@@ -77,11 +73,13 @@ async function greetUser(req, res) {
   }
   catch(err){}
 };
+
    async function reset (req, res) {
       await greetServices.clear();
      
       res.redirect('/');
     };
+
     async function namesgreeted(req, res){
       try{
         let people = req.params.username;
