@@ -18,7 +18,7 @@ module.exports = function(pool) {
   }
   async function findUser(name) {
     let user = await pool.query('select * from users where users_greeted = $1', [name]);  
-    return user;
+    return user.rows;
   }
 
   async function greetUser(name,language){

@@ -20,5 +20,16 @@
   "devDependencies": {
     "mocha": "^5.2.0"
   },
-  "description": ""
+  "description": "[![Build Status](https://travis-ci.org/ayolicias/greetings-webapp.svg?branch=master)](https://travis-ci.org/ayolicias/greetings-webapp);",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayolicias/greetings-webapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayolicias/greetings-webapp/issues"
+  },
+  "homepage": "https://github.com/ayolicias/greetings-webapp#readme"
 }
